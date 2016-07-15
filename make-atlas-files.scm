@@ -2,7 +2,7 @@
 ;;; assumes each layer is a separate texture/sprite
 ;;; the layer boundary size is assumed to be the sprite size
 
-(define (pack-textures inImage inBorderSize inString inDirName)
+(define (make-atlas-files inImage inBorderSize inString inDirName)
 
   ;; joins a list of strings using a separator
   (define (join-list separator lst)
@@ -81,8 +81,8 @@
                   (make-subtexture-tags spritesheet))) outport)
     (close-output-port outport)))
 
-(script-fu-register "pack-textures"
-                    "Pack Textures"
+(script-fu-register "make-atlas-files"
+                    "Make Atlas Files"
                     "Generates PNG and XML atlas files from the current image.  Each atlas texture is generated from the image's layers.  The texture name and texture size are taken from the layer name and layer boundaries."
                     "Sean Irby <sean.t.irby@gmail.com>"
                     "Sean Irby"
@@ -93,4 +93,4 @@
                     SF-STRING  "Output Filename" "atlas"
                     SF-DIRNAME "Output Directory" "./"
                     )
-(script-fu-menu-register "pack-textures" "<Image>/Image")
+(script-fu-menu-register "make-atlas-files" "<Image>/Image")
